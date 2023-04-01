@@ -1,4 +1,5 @@
 import Input from "@/components/Input";
+import Head from "next/head";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { signIn } from "next-auth/react";
@@ -7,7 +8,6 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 const Auth = () => {
-
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,6 @@ const Auth = () => {
         password,
         callbackUrl: "/profiles",
       });
-
     } catch (error) {
       console.log(error);
     }
@@ -49,12 +48,19 @@ const Auth = () => {
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
-      <div className="bg-black h-full w-full lg:bg-opacity-70">
-        <nav className="px-12 py-5">
-          <img src="/images/logo.png" alt="logo" className="h-12" />
+      <Head>
+        <title>SineMovie | {variant === "login" ? "Login" : "Register"}</title>
+      </Head>
+      <div className="bg-black h-full w-full lg:bg-opacity-80 flex flex-col justify-center items-center">
+        <nav className="px-12 pb-10 mt-[-50px]">
+          <img
+            src="/images/logo.png"
+            alt="logo"
+            className="h-12 mx-auto"
+          />
         </nav>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
           <div className="bg-black bg-opacity-70 p-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === "login" ? "Sign In" : "Register"}
@@ -86,7 +92,7 @@ const Auth = () => {
             </div>
             <button
               onClick={variant === "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+              className="bg-[#E3A433] py-3 text-white rounded-md w-full mt-10 hover:bg-[#E3A433] hover:bg-opacity-90 transition"
             >
               {variant === "login" ? "Login" : "Sign Up"}
             </button>
@@ -108,10 +114,10 @@ const Auth = () => {
 
             {variant === "login" ? (
               <p className="text-neutral-500 mt-12 text-sm">
-                First time using Sinemovie?
+                First time using SineMovie?
                 <span
                   onClick={toggleVariant}
-                  className="text-white ml-1 hover:underline cursor-pointer"
+                  className="text-[#E3A433] ml-1 hover:underline cursor-pointer"
                 >
                   Create an account
                 </span>
@@ -121,7 +127,7 @@ const Auth = () => {
                 Already have an account?
                 <span
                   onClick={toggleVariant}
-                  className="text-white ml-1 hover:underline cursor-pointer"
+                  className="text-[#E3A433] ml-1 hover:underline cursor-pointer"
                 >
                   Login here
                 </span>
