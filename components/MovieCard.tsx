@@ -13,7 +13,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const { openModal } = useInfoModal();
 
   return (
-    <div className="group bg-zinc-900 col-span relative h-[12vw]">
+    <div className="group bg-zinc-900 col-span relative">
       <img
         className="
           cursor-pointer
@@ -26,7 +26,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           sm:group-hover:opacity-0
           delay-300
           w-full
-          h-[12vw]
+          h-[150px]
+          sm:h-[180px]
+          lg:h-[12vw]
+
         "
         src={data?.thumbnailUrl}
         alt="Thumbnail"
@@ -121,14 +124,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
               <BiChevronDown className="text-white group-hover/item:text-neutral-300" size={30}/>
             </div>
           </div>
-          <p className="text-green-400 font-semibold mt-4">
-            New <span className="text-white">2023</span>
+          <p className="text-white text-2xl font-semibold mt-4">
+            {data?.title}
           </p>
-
+          <p className="text-[#E3A433] font-semibold mt-4">
+            New <span className="text-white ml-1">2023</span>
+          </p>
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
           </div>
-          <div className="flex flex-row mt-4 gap-2 items-center">
+          <div className="flex flex-row mt-2 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
           </div>
         </div>

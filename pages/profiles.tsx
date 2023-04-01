@@ -1,3 +1,4 @@
+import Head from "next/head";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
@@ -25,14 +26,17 @@ const Profiles = () => {
   const { data: user } = useCurrentUser();
 
   return (
-    <div className="flex items-center h-full justify-center">
+    <div className="flex items-center h-full justify-center lg:pb-10">
+      <Head>
+        <title>Profiles | SineMovie</title>
+      </Head>
       <div className="flex flex-col">
         <h1 className="text-3xl md:text-6xl text-white text-center">
           Who&apos;s watching?
         </h1>
         <div className="flex items-center justify-center gap-8 mt-10">
           <div onClick={() => router.push("/")}>
-            <div className="group flex-row w-44 mx-auto">
+            <div className="group flex-row w-44 mx-auto cursor-pointer">
               <div
                 className="
                 w-44
@@ -62,6 +66,7 @@ const Profiles = () => {
                 text-gray-400
                 text-2xl
                 text-center
+                cursor-pointer
                 group-hover:text-white
                 "
               >

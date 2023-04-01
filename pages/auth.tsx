@@ -49,7 +49,7 @@ const Auth = () => {
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <Head>
-        <title>SineMovie | {variant === "login" ? "Login" : "Register"}</title>
+        <title>{variant === "login" ? "Login" : "Register"} | SineMovie</title>
       </Head>
       <div className="bg-black h-full w-full lg:bg-opacity-80 flex flex-col justify-center items-center">
         <nav className="px-12 pb-10 mt-[-50px]">

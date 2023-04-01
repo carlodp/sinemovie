@@ -21,7 +21,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         md:px-4
         w-auto
         text-xs
-        lg: text-lg
+        lg:text-lg
         font-semibold
         flex
         flex-row
