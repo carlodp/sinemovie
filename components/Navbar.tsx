@@ -3,10 +3,13 @@ import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 const TOP_OFFSET = 66;
 
 const Navbar = () => {
+  const { data } = useCurrentUser();
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -91,7 +94,7 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="https://placehold.co/250x250?text=Profile" />
+              <img src={data?.image || "https://placehold.co/250x250?text=Profile"} />
             </div>
             <BsChevronDown
               className={`text-white transition ${

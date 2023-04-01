@@ -1,11 +1,12 @@
 import React from "react";
 import { signOut } from "next-auth/react";
-
+import useCurrentUser from "@/hooks/useCurrentUser";
 interface AccountMenuProps {
   visible?: boolean;
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const { data } = useCurrentUser();
   if (!visible) {
     return null;
   }
@@ -15,17 +16,21 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
       <div className="flex flex-col gap-3">
         <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
           <img
-            src="https://placehold.co/250x250?text=Profile"
+            src={data?.image || "https://placehold.co/250x250?text=Profile"}
             alt="Profile Image"
             className="w-8 rounded-md"
           />
           <p className="text-white text-sm group-hover/item:underline">
-            Username
+            {data?.name}
           </p>
         </div>
         <hr className="bg-gray-600 border-0 h-px my-4" />
-        <div className="px-3 text-center text-white text-sm hover:underline">
+        <div
+          onClick={() => signOut()}
+          className="px-3 text-center text-white text-sm hover:underline"
+        >
           Sign Out of SineMovie
+          
         </div>
       </div>
     </div>
