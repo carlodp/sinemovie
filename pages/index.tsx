@@ -41,7 +41,9 @@ export default function Home() {
       <Billboard />
       <div className="pb-40">
         <MovieList title="Trending Now" data={movies} />
-        <MovieList title="My List" data={favorites} />
+        <div className={`${favorites.length > 0 ? 'bg-[#e2a43a] py-10 my-16' : ''}`}>
+          <MovieList title="My List" data={favorites} />
+        </div>
         <MovieList title="Action" data={movies} />
         <MovieList title="Comedy" data={movies} />
         <MovieList title="TV Series" data={movies} />
