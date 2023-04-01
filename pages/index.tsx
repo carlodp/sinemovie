@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Billboard from "@/components/Billboard";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
@@ -32,6 +33,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>SineMovie</title>
+      </Head>
       <InfoModal visible={isOpen} onClose={closeModal}/>
       <Navbar />
       <Billboard />
